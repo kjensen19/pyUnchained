@@ -75,10 +75,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_db',
+        'HOST': '', 
+        'PORT': '5432',
     }
 }
+
+# blank string for host should equal localhost otherwise try 127.0.0.1
 
 
 # Password validation
