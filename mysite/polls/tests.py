@@ -125,3 +125,14 @@ class QuestionDetailViewTests(TestCase):
         url = reverse('polls:detail', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
+
+class QuestionResultsViewTests(TestCase):
+    def test_future_results(self):
+        """
+        Future results should return 404
+        """
+        future_results = create_question(question_text='Future results.', days=5, votes=5)
+        url = reverse('polls:results', args=(future_results.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
+
